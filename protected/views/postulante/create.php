@@ -16,4 +16,4 @@ $this->breadcrumbs=array(
 <h1>Registro de postulante</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
-<?=$mensaje; ?>
+<?="<h1>". $mensaje . "</h1>"; ?>

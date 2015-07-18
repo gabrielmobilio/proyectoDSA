@@ -71,16 +71,18 @@ class PostulanteController extends Controller
 		if(isset($_POST['Postulante']))
 		{
 			$model->attributes=$_POST['Postulante'];
-			if($model->save())
+			if($model->save()){
                             //$this->redirect(array('vistaExito'));
                             $mensaje = "Se ha registrado correctamente! ya puede iniciar sesion ";
                             $this->render('create',array('model'=>$model,'mensaje' => $mensaje));
+                        }
 		}
-
-		$this->render('create',array(
-			'model'=>$model,
-                        'mensaje' => $mensaje,
-		));
+                else{
+                    $this->render('create',array(
+                            'model'=>$model,
+                            'mensaje' => $mensaje,
+                    ));
+                }
 	}
 
 	/**
