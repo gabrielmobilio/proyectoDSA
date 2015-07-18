@@ -33,7 +33,7 @@ class PostulanteController extends Controller
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'users'=>array('*'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
@@ -63,6 +63,7 @@ class PostulanteController extends Controller
 	public function actionCreate()
 	{
 		$model=new Postulante;
+                $mensaje = null;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -71,11 +72,14 @@ class PostulanteController extends Controller
 		{
 			$model->attributes=$_POST['Postulante'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->Cedula));
+                            //$this->redirect(array('vistaExito'));
+                            $mensaje = "Se ha registrado correctamente! ya puede iniciar sesion ";
+                            $this->render('create',array('model'=>$model,'mensaje' => $mensaje));
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+                        'mensaje' => $mensaje,
 		));
 	}
 
@@ -142,6 +146,10 @@ class PostulanteController extends Controller
 			'model'=>$model,
 		));
 	}
+        
+        /*public function actionVistaExito() {
+            echo 'Te has registrado correctamente!';
+        }*/
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.

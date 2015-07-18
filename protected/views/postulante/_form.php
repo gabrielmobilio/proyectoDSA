@@ -33,7 +33,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Contrasena'); ?>
-		<?php echo $form->textField($model,'Contrasena',array('size'=>30,'maxlength'=>30)); ?>
+		<?php echo $form->passwordField($model,'Contrasena',array('size'=>30,'maxlength'=>30)); ?>
 		<?php echo $form->error($model,'Contrasena'); ?>
 	</div>
 
@@ -41,22 +41,10 @@
 		<?php echo $form->labelEx($model,'Cedula'); ?>
 		<?php echo $form->textField($model,'Cedula'); ?>
 		<?php echo $form->error($model,'Cedula'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'idEstado'); ?>
-		<?php echo $form->textField($model,'idEstado'); ?>
-		<?php echo $form->error($model,'idEstado'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'Rol'); ?>
-		<?php echo $form->textField($model,'Rol',array('size'=>30,'maxlength'=>30)); ?>
-		<?php echo $form->error($model,'Rol'); ?>
-	</div>
+        </div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Registrarse' : 'Actualizar'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

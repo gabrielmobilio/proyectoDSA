@@ -29,9 +29,10 @@ class Postulante extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Nombre, Apellido, Contrasena, Cedula, idEstado, Rol', 'required'),
-			array('Cedula, idEstado', 'numerical', 'integerOnly'=>true),
-			array('Nombre, Apellido, Contrasena, Rol', 'length', 'max'=>30),
+			array('Nombre, Apellido, Contrasena, Cedula', 'required', 'message' => 'Debe rellenar todos los campos' ),
+			array('Cedula, idEstado', 'numerical', 'integerOnly'=>true, 'message' => 'Solo se aceptan numeros en la cedula'),
+                        array('Cedula', 'unique', 'message' => 'Ya existe ese numero de cedula'),
+			array('Nombre, Apellido, Contrasena, Rol', 'length', 'max'=>30, 'message' => 'Maximo de 30 caracteres para los campos'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('Nombre, Apellido, Contrasena, Cedula, idEstado, Rol', 'safe', 'on'=>'search'),
